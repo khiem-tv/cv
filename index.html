@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tran Vu Khiem – Java Developer</title>
+<style>
+:root{--bg:#f7f6f2;--card:#fff;--tx:#1d1d1b;--mu:#66655f;--bd:#e2e0d8;--ac:#0f6e56;--acbg:#e1f5ee;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161614;--card:#222220;--tx:#f1efe8;--mu:#a8a69c;--bd:#3a3935;--ac:#5dcaa5;--acbg:#04342c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161614;--card:#222220;--tx:#f1efe8;--mu:#a8a69c;--bd:#3a3935;--ac:#5dcaa5;--acbg:#04342c;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--ac);z-index:20}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--bd);display:flex;gap:4px;align-items:center;padding:10px 20px;overflow-x:auto}
+nav b{margin-right:auto;white-space:nowrap}
+nav a{color:var(--mu);text-decoration:none;padding:6px 12px;border-radius:20px;font-size:14px;white-space:nowrap}
+nav a.on{background:var(--acbg);color:var(--ac)}
+nav button{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:20px;padding:5px 12px;cursor:pointer;font-size:13px}
+section{max-width:860px;margin:0 auto;padding:72px 20px 8px}
+h2{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);margin:0 0 24px;font-weight:500}
+#about{padding-top:64px}
+h1{font-size:clamp(34px,7vw,56px);line-height:1.1;margin:0 0 8px;font-weight:500}
+.role{font-size:20px;color:var(--ac);margin:0 0 20px}
+.lead{font-size:18px;color:var(--mu);max-width:640px}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0}
+.stat{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px 20px;min-width:120px}
+.stat b{display:block;font-size:28px;font-weight:500;color:var(--ac)}
+.stat span{font-size:13px;color:var(--mu)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:20px;padding:5px 14px;font-size:14px;cursor:pointer;font-family:inherit;transition:.2s}
+.chip:hover{border-color:var(--ac)}
+.chip.on{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+a.chip{text-decoration:none}
+.grp{margin-bottom:22px}.grp h3{font-size:14px;color:var(--mu);font-weight:500;margin:0 0 8px}
+#hint{min-height:26px;color:var(--mu);font-size:14px;margin:0 0 16px}
+#hint button{margin-left:8px;border:0;background:none;color:var(--ac);cursor:pointer;text-decoration:underline;font:inherit}
+.tl{position:relative;padding-left:28px;border-left:2px solid var(--bd);margin-left:6px}
+.job{position:relative;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px 20px;margin-bottom:18px;transition:opacity .3s,border-color .3s}
+.job::before{content:"";position:absolute;left:-37px;top:22px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--ac)}
+.job.dim{opacity:.35}.job.hit{border-color:var(--ac)}
+.job header{display:flex;justify-content:space-between;gap:12px;cursor:pointer;align-items:flex-start}
+.job h3{margin:0;font-size:18px;font-weight:500}.job .sub{color:var(--mu);font-size:14px}
+.job .date{font-size:13px;color:var(--ac);white-space:nowrap;background:var(--acbg);padding:2px 10px;border-radius:12px}
+.body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s}
+.job.open .body{grid-template-rows:1fr}
+.body>div{overflow:hidden}.body ul{margin:12px 0;padding-left:20px;color:var(--mu)}
+.job .chips{margin-top:12px}.job .chips .chip{font-size:12px;padding:2px 10px}
+.arrow{color:var(--mu);font-size:12px}.job.open .arrow{transform:rotate(180deg);display:inline-block}
+.row{display:flex;gap:14px;flex-wrap:wrap}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px 20px;flex:1;min-width:240px}
+.card h3{margin:0 0 4px;font-size:17px;font-weight:500}.card p{margin:0;color:var(--mu);font-size:15px}
+.contact a{color:var(--ac)}
+#toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%) translateY(20px);background:var(--tx);color:var(--bg);padding:8px 18px;border-radius:20px;font-size:14px;opacity:0;transition:.3s;pointer-events:none}
+#toast.s{opacity:1;transform:translateX(-50%)}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:48px 20px}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}
+.job.dim.in{opacity:.35}
+.job.rv:nth-child(odd){transform:translateX(-36px)}.job.rv:nth-child(even){transform:translateX(36px)}.job.rv.in{transform:none}
+#about{position:relative}.blob{position:absolute;right:-20px;top:40px;width:240px;height:240px;border-radius:50%;background:var(--acbg);opacity:.8;pointer-events:none}
+@keyframes up{from{opacity:0;transform:translateY(22px)}}@keyframes pop{from{opacity:0;transform:scale(.7)}}
+#about h1{animation:up .8s both}#about .role{animation:up .8s .15s both}#about .lead{animation:up .8s .3s both}.stat{animation:up .8s .45s both}
+h2::after{content:"";display:block;height:2px;width:0;background:var(--ac);margin-top:8px;transition:width .8s .2s}.in h2::after{width:48px}
+#skills.in .chip{animation:pop .4s backwards;animation-delay:calc(var(--i,0)*40ms)}
+.tl::before{content:"";position:absolute;left:-2px;top:0;width:2px;height:calc(var(--p,0)*100%);background:var(--ac)}
+.ph{margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--bd);cursor:pointer;background:var(--acbg)}
+.ph svg,.ph img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s}.ph:hover svg,.ph:hover img{transform:scale(1.05)}
+.avatar{float:right;width:180px;aspect-ratio:1;margin:0 0 16px 24px;position:relative;z-index:1}.shot,.wide{aspect-ratio:16/9;margin:12px 0}
+@media (max-width:560px){.avatar{float:none;width:140px;margin:0 0 16px}}
+nav{background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:saturate(180%) blur(16px);border-bottom-color:transparent}nav a.cta{background:var(--tx);color:var(--bg)}
+.sw{display:flex;gap:6px;margin-left:8px}.sw button{width:18px;height:18px;border-radius:50%;padding:0;border:1px solid var(--bd);cursor:pointer}.sw button[data-t=light]{background:#f7f6f2}.sw button[data-t=dark]{background:#161614}
+.eyebrow{font-size:clamp(20px,3vw,28px);color:var(--mu);margin:0 0 6px}
+#about{padding-top:96px}#about h1{font-size:clamp(48px,11vw,104px);letter-spacing:-.035em;line-height:1;transform-origin:left top}
+.big{font-size:clamp(30px,6vw,56px);line-height:1.08;letter-spacing:-.03em;font-weight:500;margin:-8px 0 24px}.mu{color:var(--mu)}
+.lead.wr{font-size:clamp(22px,3.4vw,34px);line-height:1.3;letter-spacing:-.01em;max-width:none;color:var(--tx)}.wr span{opacity:.22;transition:opacity .25s}.wr span.l{opacity:1}
+.dark{--bg:#0b0b0a;--card:#1c1c1a;--tx:#f5f4ee;--mu:#a8a69c;--bd:#3a3935;--ac:#5dcaa5;--acbg:#04342c;background:var(--bg);color:var(--tx);margin-top:72px;padding:16px 0 56px}.dark section{max-width:1000px}
+.car{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 0;scrollbar-width:none}.slide{flex:0 0 min(82%,400px);scroll-snap-align:start;background:var(--card);border-radius:28px;padding:28px;min-height:300px}
+.slide b{display:block;font-size:clamp(44px,9vw,72px);letter-spacing:-.03em;font-weight:500;color:var(--ac);margin:8px 0 12px;line-height:1}.slide p{margin:0;color:var(--mu);font-size:18px}.eb{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu)}
+input[type=range]{width:100%;accent-color:var(--ac)}.cmp{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+select{flex:1;min-width:160px;padding:10px 12px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit}
+#faq details{border-top:1px solid var(--bd);padding:16px 0}#faq details:last-child{border-bottom:1px solid var(--bd)}#faq summary{cursor:pointer;font-size:19px;font-weight:500;list-style:none;display:flex;justify-content:space-between}#faq summary::after{content:"+";color:var(--ac);transition:transform .25s}#faq details[open] summary::after{transform:rotate(45deg)}#faq p{color:var(--mu);margin:10px 0 0}
+.lg{display:flex;border:1px solid var(--bd);border-radius:20px;overflow:hidden;margin-left:8px}.lg button{border:0;border-radius:0;background:none;color:var(--mu);padding:4px 10px;font-size:13px;cursor:pointer}.lg button.on{background:var(--tx);color:var(--bg)}
+.ph{position:relative}.avatar img{object-position:center 25%}
+.hd{display:flex;gap:14px;align-items:center}.logo{width:48px;height:48px;flex:none;margin:0;border-radius:10px}.logo svg,.logo img{scale:1;translate:none}.logo:hover svg,.logo:hover img{scale:1.1}.logo img{object-fit:contain;padding:6px;background:#fff}
+:root{--gl:rgba(255,255,255,.5);--gl2:rgba(255,255,255,.75);--gb:rgba(255,255,255,.85);--gs:0 8px 32px rgba(40,40,30,.12);--ob:.5}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--gl:rgba(255,255,255,.07);--gl2:rgba(255,255,255,.14);--gb:rgba(255,255,255,.2);--gs:0 8px 32px rgba(0,0,0,.4);--ob:.3}}
+:root[data-theme="dark"]{--gl:rgba(255,255,255,.07);--gl2:rgba(255,255,255,.14);--gb:rgba(255,255,255,.2);--gs:0 8px 32px rgba(0,0,0,.4);--ob:.3}
+html{scroll-padding-top:calc(88px + env(safe-area-inset-top,0px))}
+.orbs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;translate:0 calc(var(--sy,0)*-.12px)}
+.orbs i{position:absolute;border-radius:50%;filter:blur(70px);opacity:var(--ob);animation:drift 18s ease-in-out infinite alternate;translate:calc(var(--px,0)*var(--k)*1px) calc(var(--py,0)*var(--k)*1px);transition:translate .6s ease-out}
+.orbs i:nth-child(1){width:46vmax;height:46vmax;left:-12vmax;top:-10vmax;background:#5dcaa5;--k:30}
+.orbs i:nth-child(2){width:40vmax;height:40vmax;right:-12vmax;top:30vh;background:#7f77dd;--k:-40;animation-delay:-6s}
+.orbs i:nth-child(3){width:36vmax;height:36vmax;left:20vw;bottom:-14vmax;background:#f0997b;--k:20;animation-delay:-12s}
+@keyframes drift{to{transform:translate(60px,40px) scale(1.15)}}
+.card,.job,.stat,.slide,select{background:var(--gl);-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%);border:1px solid var(--gb);box-shadow:var(--gs),inset 0 1px 0 var(--gb),inset 0 -1px 0 rgba(255,255,255,.08)}
+.card,.job,.stat,.slide,.chip{position:relative}
+.card::after,.job::after,.stat::after,.slide::after,.chip::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(220px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.32),transparent 60%);opacity:0;transition:opacity .35s}
+.card:hover::after,.job:hover::after,.stat:hover::after,.slide:hover::after,.chip:hover::after{opacity:1}
+.card,.slide,.stat{transition:translate .4s cubic-bezier(.3,1.5,.5,1)}.card:hover,.slide:hover,.stat:hover{translate:0 -4px}
+.chip{background:var(--gl);border-color:var(--gb);box-shadow:inset 0 1px 0 var(--gb)}.chip:active,.sw button:active,.lg button:active,nav a:active{transform:scale(.93)}
+.ph{border:1px solid var(--gb);box-shadow:var(--gs)}
+nav{position:sticky;top:calc(10px + env(safe-area-inset-top,0px));width:calc(100% - 24px);max-width:920px;margin:10px auto 0;padding:8px 14px;border-radius:999px;border:1px solid var(--gb);background:var(--gl);-webkit-backdrop-filter:blur(22px) saturate(200%);backdrop-filter:blur(22px) saturate(200%);box-shadow:var(--gs),inset 0 1px 0 var(--gb),inset 0 -1px 0 rgba(255,255,255,.08);scrollbar-width:none}
+nav a,nav b{position:relative;z-index:1}nav a.on:not(.cta){background:none;color:var(--tx)}
+.lens{position:absolute;top:6px;bottom:6px;left:0;width:0;border-radius:999px;background:linear-gradient(180deg,var(--gl2),var(--gl));border:1px solid var(--gb);box-shadow:inset 0 1px 0 var(--gb),0 4px 14px rgba(0,0,0,.14);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:left .5s cubic-bezier(.3,1.5,.5,1),width .5s cubic-bezier(.3,1.5,.5,1);pointer-events:none}
+.lg,.sw button{background:var(--gl)}
+.dark{background:rgba(8,8,7,.72);--gl:rgba(255,255,255,.07);--gl2:rgba(255,255,255,.14);--gb:rgba(255,255,255,.2);--gs:0 8px 32px rgba(0,0,0,.4)}
+input[type=range]{-webkit-appearance:none;appearance:none;height:34px;background:transparent}
+input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:8px;background:var(--gl);border:1px solid var(--gb)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:28px;margin-top:-10px;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.6));border:1px solid var(--gb);box-shadow:0 4px 14px rgba(0,0,0,.25),inset 0 1px 0 #fff;transition:transform .25s cubic-bezier(.3,1.5,.5,1)}
+input[type=range]:active::-webkit-slider-thumb{transform:scale(1.18)}
+input[type=range]::-moz-range-track{height:8px;border-radius:8px;background:var(--gl);border:1px solid var(--gb)}
+input[type=range]::-moz-range-thumb{width:44px;height:28px;border-radius:999px;background:rgba(255,255,255,.9);border:1px solid var(--gb);box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.ph.rvp{opacity:0;transform:translateY(32px) scale(.94);clip-path:inset(12% round 12px);transition:opacity .8s,transform .9s cubic-bezier(.2,.7,.2,1),clip-path .9s cubic-bezier(.2,.7,.2,1)}
+.ph.rvp.in{opacity:1;transform:none;clip-path:inset(0 round 12px)}
+.avatar.rvp{transition:opacity .8s,clip-path .9s cubic-bezier(.2,.7,.2,1)}
+.ph svg,.ph img{transform:none;scale:1.12;translate:0 var(--py,0px);transition:scale .6s}.ph:hover svg,.ph:hover img{transform:none;scale:1.2}
+.ph::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.4) 50%,transparent 62%);transform:translateX(-100%)}
+.ph.in::after{animation:shine 1.3s .5s ease-out}
+@keyframes shine{to{transform:translateX(100%)}}
+@media (prefers-reduced-motion:reduce){.ph.rvp{opacity:1;transform:none;clip-path:none}.ph svg,.ph img{scale:1;translate:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style></head><body>
+<div id="bar"></div>
+<div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
+<nav><b>Khiem Tran</b><a href="#about">Overview</a><a href="#highlights">Highlights</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#closer">Timeline</a><a href="#faq">FAQ</a><a href="#contact" class="cta">Contact</a><span class="lg"><button data-l="en">EN</button><button data-l="vi">VI</button></span><span class="sw"><button data-t="light" aria-label="Star white theme"></button><button data-t="dark" aria-label="Night sky theme"></button></span></nav>
+
+<section id="about" class="rv">
+<div class="blob" data-px="0.2"></div>
+<figure class="ph avatar" data-img="avatar" data-px="0.08" data-label="Profile photo"></figure>
+<p class="eyebrow">Hello, hello.</p>
+<h1>Tran Vu Khiem</h1>
+<p class="role">Java Backend Developer</p>
+<p class="lead">Passionate Java Backend Developer with 5+ years of experience building scalable web applications, microservices, and RESTful APIs. Calm under pressure, a strong problem-solver, and a collaborative team player who thrives in fast-paced environments.</p>
+<div class="stats">
+<div class="stat"><b data-n="5">0</b><span>years experience (+)</span></div>
+<div class="stat"><b data-n="6">0</b><span>companies &amp; projects</span></div>
+<div class="stat"><b data-n="17">0</b><span>technologies</span></div></div>
+<h2>Objective</h2>
+<p class="lead wr" id="obj">Seeking a challenging Java Backend Developer position where I can leverage my expertise in Spring Boot, microservices, and cloud technologies to deliver high-quality solutions. Eager to contribute to large-scale projects, keep improving technical skills, and grow with the company's success.</p>
+</section>
+
+<div class="dark"><section id="highlights" class="rv"><h2>Highlights</h2><p class="big">Get the highlights.</p><div id="pills" class="chips"></div><div id="car" class="car"></div></section></div>
+<section id="skills" class="rv">
+<h2>Skills</h2>
+<p id="hint">Tip: click a skill to highlight the roles where it was used.</p>
+<div id="skillbox"></div>
+</section>
+
+<section id="experience" class="rv">
+<h2>Experience</h2>
+<div class="tl" id="tl"></div>
+</section>
+
+<section id="closer" class="rv"><h2>Timeline</h2><p class="big">Take a closer look.</p><p class="mu">Move the slider to travel through the years.</p><input type="range" id="yr" min="0" max="85" value="85" aria-label="Month"><div id="yo" class="card" style="margin-top:16px"></div></section>
+<section id="compare" class="rv"><h2>Compare</h2><p class="big">Compare roles.</p><div class="cmp"><select id="c1" aria-label="First role"></select><select id="c2" aria-label="Second role"></select></div><div id="cout" class="row"></div></section>
+<section id="education" class="rv">
+<h2>Education &amp; certification</h2>
+<div class="row">
+<div class="card"><figure class="ph wide" data-img="edu" data-label="University photo"></figure><h3>Ho Chi Minh City University of Technology</h3><p>9/2015 – 9/2019<br>Major: Information Technology · Classification: Good</p></div>
+<div class="card"><figure class="ph wide" data-img="cert" data-label="Certificate image"></figure><h3>English – CEFR B1</h3><p>Certification</p></div></div>
+</section>
+
+<section id="faq" class="rv"><h2>FAQ</h2><p class="big">Questions? Answers.</p><p><button class="chip" id="ex">Expand all</button> <button class="chip" id="co">Collapse all</button></p>
+<details open><summary>What is the strongest stack?</summary><p>Java with Spring (Spring Boot and Spring Framework), used in 4 of 6 roles, backed by SQL Server, Oracle, and PostgreSQL.</p></details>
+<details><summary>Which domains has the work covered?</summary><p>Banking (onsite), healthcare and genetic-testing data, insurance, CRM and HRM systems, JavaFX desktop applications, and freelance projects.</p></details>
+<details><summary>What about microservices and messaging?</summary><p>RESTful APIs and microservices with Spring, plus Kafka, RabbitMQ, and Redis, with Docker and Git in daily use.</p></details>
+<details><summary>Education and English level?</summary><p>Information Technology at Ho Chi Minh City University of Technology (2015 – 2019), classification Good. English at CEFR B1.</p></details>
+<details><summary>How can I get in touch?</summary><p>Email tranvukhiem.html@gmail.com or call (84) 0354933081. Details are in the contact section below.</p></details></section>
+<section id="contact" class="rv">
+<h2>Contact</h2>
+<div class="card contact">
+<p><b style="color:var(--tx)">Email</b> · <a href="mailto:tranvukhiem.html@gmail.com">tranvukhiem.html@gmail.com</a> <button class="chip" data-copy="tranvukhiem.html@gmail.com">Copy</button></p>
+<p style="margin-top:8px"><b style="color:var(--tx)">Phone</b> · <a href="tel:+840354933081">(84) 0354933081</a> <button class="chip" data-copy="+84 354933081">Copy</button></p>
+<p style="margin-top:8px"><b style="color:var(--tx)">Address</b> · 40 Kha Van Can, Linh Tay, Thu Duc City</p>
+<p style="margin-top:8px"><b style="color:var(--tx)">Born</b> · 25/07/1997 · Male</p>
+</div></section>
+<footer>Tran Vu Khiem · 2026</footer>
+<div id="toast">Copied</div>
+
+<script>
+var IMAGES={avatar:"data:image/jpeg;base64,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",logo0:"",logo1:"",logo2:"",logo3:"",logo4:"",logo5:"",edu:"",cert:""};
+function LOGO(l){var i=l.replace(/ logo$/,'').split(/[\s()_]+/).filter(Boolean).map(function(w){return w[0]}).join('').slice(0,2).toUpperCase();return "<svg viewBox='0 0 48 48' role='img' aria-label='"+l+"'><rect width='48' height='48' fill='var(--acbg)'/><text x='24' y='30' text-anchor='middle' font-size='16' fill='var(--ac)' font-family='system-ui,sans-serif'>"+i+"</text></svg>"}
+function renderPh(){$$(".ph").forEach(function(f){var u=IMAGES[f.dataset.img],l=f.dataset.label;f.title="Click to preview your own image";f.innerHTML=u?"<img src='"+u+"' alt='"+l+"'>":(f.classList.contains('logo')?LOGO(l):'')||"<svg viewBox='0 0 400 225' preserveAspectRatio='xMidYMid slice' role='img' aria-label='"+l+"'><rect width='400' height='225' fill='var(--acbg)'/><circle cx='300' cy='70' r='22' fill='var(--ac)' opacity='.5'/><path d='M0 225V160L110 90L190 150L260 110L400 190V225Z' fill='var(--ac)' opacity='.35'/><text x='200' y='205' text-anchor='middle' font-size='15' fill='var(--mu)' font-family='system-ui,sans-serif'>"+l+"</text></svg>"})}
+var fi=document.createElement("input"),cur;fi.type="file";fi.accept="image/*";fi.onchange=function(){var r=new FileReader();r.onload=function(){IMAGES[cur]=r.result;renderPh()};if(fi.files[0])r.readAsDataURL(fi.files[0])};
+document.addEventListener("click",function(e){var p=e.target.closest(".ph");if(p){cur=p.dataset.img;fi.click()}});
+var skills={"Programming":["Java","Spring","Vert.x","JavaFX"],"Databases & messaging":["SQL Server","Oracle","PostgreSQL","Redis","RabbitMQ","Kafka"],"DevOps & tools":["Docker","Git","SVN","Azure","REST","Microservices"],"Frontend basics":["HTML/CSS/JS"]};
+var jobs=[
+{c:"Freelancer",t:"Java Developer",d:"5/2025 – Present",b:["Collaborated with team members to deliver multiple freelance projects.","Developed and implemented features based on client requirements."],k:["Java"]},
+{c:"CMC Global",t:"Java BE (Onsite – Banking)",d:"12/2024 – 4/2025",b:["Java backend developer in an onsite team at a bank.","Designed, developed, and operated web services integrating frontend systems, internal platforms, and external partner APIs, ensuring performance and reliability."],k:["Java","Spring","Vert.x","Redis","Docker","Kafka"]},
+{c:"Omi Group",t:"Java Developer",d:"12/2023 – 10/2024",b:["Worked with Java Spring, Azure and PostgreSQL on a healthcare web management project.","Handled and analysed genetic data, including uploading and processing genetic-testing data.","Built coding solutions tailored to client needs, combining technical development with client interaction."],k:["Java","Spring","Azure","PostgreSQL"]},
+{c:"DXC Technology",t:"Java Developer",d:"04/2023 – 08/2023",b:["Built, developed, and maintained applications for insurance projects.","Used Java Spring for RESTful API and microservices projects, with SQL Server and Oracle."],k:["Java","Spring","REST","Microservices","SQL Server","Oracle"]},
+{c:"MoMo (M_Service)",t:"Java Developer",d:"04/2022 – 03/2023",b:["Delivered JavaFX-based applications, ensuring seamless functionality.","Used Java as the primary language with SQL Server, PostgreSQL, and Oracle.","Wrote and edited design documents; joined client discussions on requirements and planning."],k:["Java","JavaFX","SQL Server","PostgreSQL","Oracle"]},
+{c:"Fujinet",t:"Java Developer",d:"10/2019 – 04/2022",b:["Built and maintained internal applications, focusing on CRM and HRM projects.","Used Java Spring for RESTful API and microservices, with SQL Server and Oracle; also Git, Docker, and RabbitMQ.","Took part in planning and development discussions with seniors."],k:["Java","Spring","REST","Microservices","SQL Server","Oracle","Git","Docker","RabbitMQ"]}];
+var sel=null,$=function(s,e){return (e||document).querySelector(s)},$$=function(s,e){return [].slice.call((e||document).querySelectorAll(s))};
+var sb=$("#skillbox"),ci=0;
+Object.keys(skills).forEach(function(g){var d=document.createElement("div");d.className="grp";d.innerHTML="<h3>"+g.replace("&","&amp;")+"</h3><div class='chips'>"+skills[g].map(function(s){return "<button class='chip' style='--i:"+(ci++)+"' data-s='"+s+"'>"+s+"</button>"}).join("")+"</div>";sb.appendChild(d)});
+var tl=$("#tl");
+jobs.forEach(function(j,i){var e=document.createElement("article");e.className="job rv"+(i==0?" open":"");e.innerHTML="<header><div class='hd'><figure class='ph logo' data-img='logo"+i+"' data-label='"+j.c+" logo'></figure><div><h3>"+j.c+"</h3><div class='sub'>"+j.t+"</div></div></div><div><span class='date'>"+j.d+"</span> <span class='arrow'>▼</span></div></header><div class='body'><div><ul>"+j.b.map(function(x){return "<li>"+x+"</li>"}).join("")+"</ul><div class='chips'>"+j.k.map(function(k){return "<button class='chip' data-s='"+k+"'>"+k+"</button>"}).join("")+"</div></div></div>";tl.appendChild(e)});
+function apply(){var n=0;$$(".job").forEach(function(e,i){var h=sel&&jobs[i].k.indexOf(sel)>-1;if(h)n++;e.classList.toggle("hit",!!h);e.classList.toggle("dim",!!sel&&!h);if(h)e.classList.add("open")});
+$$(".chip[data-s]").forEach(function(c){c.classList.toggle("on",c.dataset.s===sel)});
+$("#hint").innerHTML=sel?"<b>"+sel+"</b> used in "+n+" of "+jobs.length+" roles.<button id='clr'>Clear</button>":"Tip: click a skill to highlight the roles where it was used.";
+var c=$("#clr");if(c)c.onclick=function(){sel=null;apply()}}
+document.addEventListener("click",function(ev){var c=ev.target.closest(".chip[data-s]");if(c){sel=sel===c.dataset.s?null:c.dataset.s;apply();if(sel&&c.closest("#skillbox"))$("#experience").scrollIntoView();return}
+var h=ev.target.closest(".job header");if(h&&!ev.target.closest(".ph"))h.parentNode.classList.toggle("open");
+var cp=ev.target.closest("[data-copy]");if(cp){try{navigator.clipboard.writeText(cp.dataset.copy)}catch(e){}var t=$("#toast");t.classList.add("s");setTimeout(function(){t.classList.remove("s")},1400)}});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");$$("[data-n]",e.target).forEach(count);io.unobserve(e.target)}})},{threshold:.12});
+$$(".rv").forEach(function(e){io.observe(e)});
+function count(el){var n=+el.dataset.n,s=null;(function f(t){if(!s)s=t;var p=Math.min((t-s)/900,1);el.textContent=Math.round(n*p);if(p<1)requestAnimationFrame(f)})(performance.now())}
+var links=$$("nav a"),secs=$$("section");
+function spy(){var y=window.scrollY+120,cur=secs[0].id;secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+cur)});
+var m=document.documentElement.scrollHeight-innerHeight;$("#bar").style.width=(m>0?scrollY/m*100:0)+"%";
+var t=$("#tl").getBoundingClientRect();$("#tl").style.setProperty("--p",Math.max(0,Math.min(1,(innerHeight*.6-t.top)/t.height)));
+if(!matchMedia("(prefers-reduced-motion: reduce)").matches)$$("[data-px]").forEach(function(e){e.style.transform="translateY("+scrollY*e.dataset.px+"px)"})}
+renderPh();addEventListener("scroll",spy,{passive:true});spy();
+$$(".sw button").forEach(function(b){b.onclick=function(){document.documentElement.dataset.theme=b.dataset.t}});
+var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,M="Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(" ");
+var obj=$("#obj");obj.innerHTML=obj.textContent.trim().split(/\s+/).map(function(w){return "<span>"+w+"</span>"}).join(" ");var ws=$$("span",obj);
+var H=[["5+","Experience","years building scalable web apps, microservices and RESTful APIs."],["6","Roles","companies and projects across banking, healthcare, insurance and CRM/HRM."],["Kafka","Banking","Onsite Java backend at a bank: web services linking frontends, internal platforms and partner APIs."],["Azure","Healthcare","Spring and PostgreSQL web management for genetic-testing data."],["REST","Microservices","Spring APIs on SQL Server and Oracle for insurance and CRM/HRM apps."]];
+var car=$("#car"),pl=$("#pills");
+H.forEach(function(h,i){car.insertAdjacentHTML("beforeend","<div class='slide'><span class='eb'>"+h[1]+"</span><b>"+h[0]+"</b><p>"+h[2]+"</p></div>");pl.insertAdjacentHTML("beforeend","<button class='chip' data-i='"+i+"'>"+h[1]+"</button>")});
+pl.onclick=function(e){var b=e.target.closest("button");if(b)car.scrollTo({left:car.children[b.dataset.i].offsetLeft-car.offsetLeft,behavior:"smooth"})};
+function pill(){var s=car.scrollLeft,k=0,m=1e9;[].forEach.call(car.children,function(c,i){var d=Math.abs(c.offsetLeft-car.offsetLeft-s);if(d<m){m=d;k=i}});$$("button",pl).forEach(function(b,i){b.classList.toggle("on",i==k)})}
+car.addEventListener("scroll",pill,{passive:true});pill();
+var rg=jobs.map(function(j){var m=j.d.match(/(\d+)\/(\d+)\D+(?:(\d+)\/(\d+)|Present)/);return {s:(m[2]-2019)*12+(+m[1]-10),e:m[3]?(m[4]-2019)*12+(+m[3]-10):85}});
+var yr=$("#yr"),yo=$("#yo");
+function year(){var v=+yr.value,k=-1;rg.forEach(function(r,i){if(v>=r.s&&v<=r.e)k=i});var j=jobs[k];yo.innerHTML="<div class='eb'>"+M[(v+9)%12]+" "+(2019+Math.floor((v+9)/12))+"</div>"+(k<0?"<h3>Between roles</h3>":"<h3>"+j.c+"</h3><div class='sub'>"+j.t+" · "+j.d+"</div><p class='mu'>"+j.b[0]+"</p><div class='chips'>"+j.k.map(function(t){return "<span class='chip' style='cursor:default'>"+t+"</span>"}).join("")+"</div>")}
+yr.oninput=year;year();
+var c1=$("#c1"),c2=$("#c2");jobs.forEach(function(j,i){var o="<option value='"+i+"'>"+j.c+"</option>";c1.insertAdjacentHTML("beforeend",o);c2.insertAdjacentHTML("beforeend",o)});c1.value=1;c2.value=5;
+function cmp(){var a=jobs[c1.value],b=jobs[c2.value];$("#cout").innerHTML=[[a,b],[b,a]].map(function(p){return "<div class='card'><h3>"+p[0].c+"</h3><p>"+p[0].t+" · "+p[0].d+"</p><div class='chips' style='margin-top:12px'>"+p[0].k.map(function(t){return "<span class='chip"+(p[1].k.indexOf(t)>-1?" on":"")+"' style='cursor:default'>"+t+"</span>"}).join("")+"</div></div>"}).join("")+"<p class='mu' style='flex-basis:100%;font-size:14px;margin:0'>Highlighted = used in both roles.</p>"}
+c1.onchange=c2.onchange=cmp;cmp();
+$("#ex").onclick=function(){$$("#faq details").forEach(function(d){d.open=true})};$("#co").onclick=function(){$$("#faq details").forEach(function(d){d.open=false})};
+function extra(){var hp=Math.min(scrollY/500,1),h=$("#about h1");if(!reduce){h.style.opacity=1-hp*.5;h.style.transform="scale("+(1-hp*.06)+")"}
+var r=obj.getBoundingClientRect(),p=Math.max(0,Math.min(1,(innerHeight*.85-r.top)/(innerHeight*.45))),n=reduce?ws.length:Math.round(p*ws.length);ws.forEach(function(s,i){s.classList.toggle("l",i<n)})}
+addEventListener('scroll',extra,{passive:true});extra();
+var LANG='en',OBJ={en:obj.textContent,vi:'Tìm kiếm vị trí Java Backend Developer đầy thử thách, nơi tôi có thể phát huy chuyên môn về Spring Boot, microservices và công nghệ đám mây để mang lại giải pháp chất lượng cao. Mong muốn đóng góp cho các dự án quy mô lớn, không ngừng nâng cao kỹ năng và cùng phát triển với sự thành công của công ty.'};
+var VI={'Overview':'Tổng quan','Highlights':'Điểm nổi bật','Skills':'Kỹ năng','Experience':'Kinh nghiệm','Timeline':'Hành trình','FAQ':'Hỏi đáp','Contact':'Liên hệ',
+'Hello, hello.':'Xin chào.','Java Backend Developer':'Lập trình viên Java Backend',
+'Passionate Java Backend Developer with 5+ years of experience building scalable web applications, microservices, and RESTful APIs. Calm under pressure, a strong problem-solver, and a collaborative team player who thrives in fast-paced environments.':'Lập trình viên Java Backend đầy nhiệt huyết với hơn 5 năm kinh nghiệm xây dựng ứng dụng web có khả năng mở rộng, microservices và RESTful API. Giải quyết vấn đề tốt, bình tĩnh dưới áp lực và là thành viên làm việc nhóm hiệu quả, phát huy trong môi trường nhịp độ nhanh.',
+'years experience (+)':'năm kinh nghiệm (+)','companies & projects':'công ty & dự án','technologies':'công nghệ','Objective':'Mục tiêu',
+'Get the highlights.':'Những điểm nổi bật.','Roles':'Vị trí','Banking':'Ngân hàng','Healthcare':'Y tế','Microservices':'Microservices',
+'years building scalable web apps, microservices and RESTful APIs.':'năm xây dựng ứng dụng web mở rộng, microservices và RESTful API.',
+'companies and projects across banking, healthcare, insurance and CRM/HRM.':'công ty và dự án trong lĩnh vực ngân hàng, y tế, bảo hiểm và CRM/HRM.',
+'Onsite Java backend at a bank: web services linking frontends, internal platforms and partner APIs.':'Java backend onsite tại ngân hàng: web service kết nối frontend, nền tảng nội bộ và API đối tác.',
+'Spring and PostgreSQL web management for genetic-testing data.':'Hệ thống quản lý web với Spring và PostgreSQL cho dữ liệu xét nghiệm gen.',
+'Spring APIs on SQL Server and Oracle for insurance and CRM/HRM apps.':'API Spring trên SQL Server và Oracle cho ứng dụng bảo hiểm và CRM/HRM.',
+'Tip: click a skill to highlight the roles where it was used.':'Mẹo: nhấp vào một kỹ năng để làm nổi bật các vị trí đã dùng nó.','Clear':'Xóa',
+'Programming':'Lập trình','Databases & messaging':'Cơ sở dữ liệu & nhắn tin','DevOps & tools':'DevOps & công cụ','Frontend basics':'Frontend cơ bản',
+'Collaborated with team members to deliver multiple freelance projects.':'Cộng tác với các thành viên trong nhóm để giao nhiều dự án freelance.',
+'Developed and implemented features based on client requirements.':'Phát triển và triển khai các tính năng theo yêu cầu của khách hàng.',
+'Java backend developer in an onsite team at a bank.':'Lập trình viên Java backend trong nhóm onsite tại một ngân hàng.',
+'Designed, developed, and operated web services integrating frontend systems, internal platforms, and external partner APIs, ensuring performance and reliability.':'Thiết kế, phát triển và vận hành các web service tích hợp hệ thống frontend, nền tảng nội bộ và API đối tác bên ngoài, đảm bảo hiệu năng và độ tin cậy.',
+'Worked with Java Spring, Azure and PostgreSQL on a healthcare web management project.':'Làm việc với Java Spring, Azure và PostgreSQL trong dự án quản lý web lĩnh vực y tế.',
+'Handled and analysed genetic data, including uploading and processing genetic-testing data.':'Xử lý và phân tích dữ liệu gen, bao gồm tải lên và xử lý dữ liệu xét nghiệm gen.',
+'Built coding solutions tailored to client needs, combining technical development with client interaction.':'Xây dựng giải pháp lập trình phù hợp nhu cầu khách hàng, kết hợp phát triển kỹ thuật và trao đổi với khách hàng.',
+'Built, developed, and maintained applications for insurance projects.':'Xây dựng, phát triển và bảo trì các ứng dụng cho dự án bảo hiểm.',
+'Used Java Spring for RESTful API and microservices projects, with SQL Server and Oracle.':'Dùng Java Spring cho các dự án RESTful API và microservices, cùng SQL Server và Oracle.',
+'Delivered JavaFX-based applications, ensuring seamless functionality.':'Triển khai các ứng dụng dùng JavaFX, đảm bảo vận hành ổn định.',
+'Used Java as the primary language with SQL Server, PostgreSQL, and Oracle.':'Dùng Java làm ngôn ngữ chính cùng SQL Server, PostgreSQL và Oracle.',
+'Wrote and edited design documents; joined client discussions on requirements and planning.':'Viết và chỉnh sửa tài liệu thiết kế; tham gia các buổi trao đổi với khách hàng về yêu cầu và kế hoạch.',
+'Built and maintained internal applications, focusing on CRM and HRM projects.':'Xây dựng và bảo trì các ứng dụng nội bộ, tập trung vào các dự án CRM và HRM.',
+'Used Java Spring for RESTful API and microservices, with SQL Server and Oracle; also Git, Docker, and RabbitMQ.':'Dùng Java Spring cho RESTful API và microservices, cùng SQL Server và Oracle; ngoài ra có Git, Docker và RabbitMQ.',
+'Took part in planning and development discussions with seniors.':'Tham gia các buổi thảo luận về kế hoạch và phát triển với cấp trên.',
+'Profile photo':'Ảnh đại diện','University photo':'Ảnh trường đại học','Certificate image':'Ảnh chứng chỉ',
+'Take a closer look.':'Nhìn kỹ hơn.','Move the slider to travel through the years.':'Kéo thanh trượt để đi qua các năm.','Between roles':'Giữa hai vị trí',
+'Compare':'So sánh','Compare roles.':'So sánh vị trí.','Highlighted = used in both roles.':'Được tô sáng = dùng ở cả hai vị trí.',
+'Education & certification':'Học vấn & chứng chỉ','Ho Chi Minh City University of Technology':'Đại học Bách khoa TP. Hồ Chí Minh','Major: Information Technology · Classification: Good':'Chuyên ngành: Công nghệ thông tin · Xếp loại: Khá','English – CEFR B1':'Tiếng Anh – CEFR B1','Certification':'Chứng chỉ',
+'Questions? Answers.':'Hỏi & Đáp.','Expand all':'Mở rộng tất cả','Collapse all':'Thu gọn tất cả',
+'What is the strongest stack?':'Bộ công nghệ mạnh nhất là gì?','Java with Spring (Spring Boot and Spring Framework), used in 4 of 6 roles, backed by SQL Server, Oracle, and PostgreSQL.':'Java với Spring (Spring Boot và Spring Framework), dùng trong 4/6 vị trí, đi cùng SQL Server, Oracle và PostgreSQL.',
+'Which domains has the work covered?':'Công việc đã bao phủ những lĩnh vực nào?','Banking (onsite), healthcare and genetic-testing data, insurance, CRM and HRM systems, JavaFX desktop applications, and freelance projects.':'Ngân hàng (onsite), y tế và dữ liệu xét nghiệm gen, bảo hiểm, hệ thống CRM và HRM, ứng dụng desktop JavaFX và các dự án freelance.',
+'What about microservices and messaging?':'Còn microservices và messaging thì sao?','RESTful APIs and microservices with Spring, plus Kafka, RabbitMQ, and Redis, with Docker and Git in daily use.':'RESTful API và microservices với Spring, cùng Kafka, RabbitMQ và Redis; dùng Docker và Git hằng ngày.',
+'Education and English level?':'Học vấn và trình độ tiếng Anh?','Information Technology at Ho Chi Minh City University of Technology (2015 – 2019), classification Good. English at CEFR B1.':'Công nghệ thông tin tại Đại học Bách khoa TP. Hồ Chí Minh (2015 – 2019), xếp loại Khá. Tiếng Anh CEFR B1.',
+'How can I get in touch?':'Làm sao để liên hệ?','Email tranvukhiem.html@gmail.com or call (84) 0354933081. Details are in the contact section below.':'Email tranvukhiem.html@gmail.com hoặc gọi (84) 0354933081. Chi tiết ở phần liên hệ bên dưới.',
+'Phone':'Điện thoại','Address':'Địa chỉ','Born':'Ngày sinh','Copy':'Sao chép','Copied':'Đã sao chép'};
+var RX=[[/Present/g,'Hiện tại'],[/Onsite – Banking/g,'Onsite – Ngân hàng'],[/ · project screenshot/g,' · ảnh chụp dự án'],[/used in (\d+) of (\d+) roles\./,'dùng trong $1/$2 vị trí.'],[/\bMale\b/,'Nam'],[/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{4})\b/g,function(_,m,y){return 'Tháng '+(M.indexOf(m)+1)+'/'+y}]];
+function tr(n){if(n.__en!==undefined)return;var raw=n.data,k=raw.replace(/\s+/g,' ').trim();if(!k)return;var v=VI[k];if(v===undefined){v=k;RX.forEach(function(r){v=v.replace(r[0],r[1])})}if(v===k)return;n.__en=raw;n.data=raw.match(/^\s*/)[0]+v+raw.match(/\s*$/)[0]}
+function un(n){if(n.__en!==undefined){n.data=n.__en;delete n.__en}}
+function walk(root){var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){var p=n.parentNode;return (p&&/^(SCRIPT|STYLE)$/.test(p.nodeName))||(p&&p.closest&&p.closest('#obj'))?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT}}),n,a=[];while(n=w.nextNode())a.push(n);a.forEach(LANG=='vi'?tr:un)}
+new MutationObserver(function(ms){if(LANG!='vi')return;ms.forEach(function(m){[].forEach.call(m.addedNodes,function(n){if(n.nodeType==3)tr(n);else if(n.nodeType==1)walk(n)})})}).observe(document.body,{childList:true,subtree:true});
+function setLang(l){LANG=l;document.documentElement.lang=l;try{localStorage.setItem('cvlang',l)}catch(e){}walk(document.body);var t=OBJ[l];obj.innerHTML=t.split(/\s+/).map(function(w){return '<span>'+w+'</span>'}).join(' ');ws=$$('span',obj);extra();document.title=l=='vi'?'Tran Vu Khiem – Lập trình viên Java':'Tran Vu Khiem – Java Developer';$$('.lg button').forEach(function(b){b.classList.toggle('on',b.dataset.l==l)})}
+$$('.lg button').forEach(function(b){b.onclick=function(){setLang(b.dataset.l)}});
+var phs=$$('.ph'),pio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');pio.unobserve(e.target)}})},{threshold:.25});
+phs.forEach(function(p){p.classList.add('rvp');pio.observe(p)});
+function thumbs(){if(reduce)return;phs.forEach(function(p){var r=p.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight||!r.height)return;var q=(r.top+r.height/2-innerHeight/2)/innerHeight;p.style.setProperty('--py',(Math.max(-1,Math.min(1,q))*-.06*r.height).toFixed(1)+'px')})}
+addEventListener('scroll',thumbs,{passive:true});thumbs();
+var lens=document.createElement('i');lens.className='lens';$('nav').prepend(lens);
+function lensMove(){var a=$('nav a.on:not(.cta)');if(!a){lens.style.width='0px';return}lens.style.left=a.offsetLeft+'px';lens.style.width=a.offsetWidth+'px'}
+addEventListener('scroll',function(){requestAnimationFrame(lensMove)},{passive:true});addEventListener('resize',lensMove);lensMove();
+$$('.lg button').forEach(function(b){b.addEventListener('click',function(){setTimeout(lensMove,80)})});setTimeout(lensMove,300);
+var orbs=$('.orbs');
+addEventListener('scroll',function(){orbs.style.setProperty('--sy',scrollY)},{passive:true});
+document.addEventListener('pointermove',function(e){var t=e.target.closest&&e.target.closest('.card,.job,.stat,.slide,.chip');if(t){var r=t.getBoundingClientRect();t.style.setProperty('--mx',(e.clientX-r.left)+'px');t.style.setProperty('--my',(e.clientY-r.top)+'px')}if(!reduce){orbs.style.setProperty('--px',(e.clientX/innerWidth-.5)*2);orbs.style.setProperty('--py',(e.clientY/innerHeight-.5)*2)}},{passive:true});
+var sv=null;try{sv=localStorage.getItem('cvlang')}catch(e){}setLang(sv||((navigator.language||'').toLowerCase().indexOf('vi')==0?'vi':'en'));
+</script></body></html>
